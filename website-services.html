@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Design, Domain & Hosting - IT Technica</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Styles for the slideshow images */
+        .slideshow-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Set to 'cover' for filling the space */
+            opacity: 0; /* Hidden by default */
+            transition: opacity 1.5s ease-in-out; /* Smooth fade transition */
+        }
+        .slideshow-image.active {
+            opacity: 1; /* Active image is visible */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header and Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-blue-700 rounded-md p-2 hover:bg-blue-50 transition-colors flex items-center">
+                <img src="https://i.imgur.com/JTB9DuB.jpeg" alt="IT Technica Logo" class="h-7 w-auto mr-2"> 
+                IT Technica
+            </a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <!-- Megatraining Image/Link added -->
+                <a href="https://megatraining.com.np/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                    <img src="https://i.imgur.com/BDclEmo.png" alt="Megatraining" class="w-7 h-7 object-contain rounded-full">
+                </a>
+                <!-- Facebook Icon added to the left of Home -->
+                <a href="https://www.facebook.com/ittechnica/" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-blue-700 transition-colors p-2 rounded-full hover:bg-gray-100">
+                    <i class="fab fa-facebook-f text-lg"></i>
+                </a>
+                <a href="index.html#home" class="text-gray-700 hover:text-blue-700 font-medium transition-colors p-2 rounded-md hover:bg-gray-100">Home</a>
+                <a href="index.html#services" class="text-blue-700 hover:text-blue-700 font-medium transition-colors p-2 rounded-md hover:bg-gray-100 bg-blue-50">Services</a>
+                <a href="index.html#about" class="text-gray-700 hover:text-blue-700 font-medium transition-colors p-2 rounded-md hover:bg-gray-100">About Us</a>
+                <a href="index.html#contact" class="text-gray-700 hover:text-blue-700 font-medium transition-colors p-2 rounded-md hover:bg-gray-100">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 p-2 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-4">
+            <!-- Megatraining Image/Link added to mobile menu -->
+            <a href="https://megatraining.com.np/" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors flex items-center">
+                <img src="https://i.imgur.com/BDclEmo.png" alt="Megatraining" class="w-7 h-7 object-contain rounded-full mr-2"> Megatraining
+            </a>
+            <!-- Facebook Icon added to the left of Home in mobile menu -->
+            <a href="https://www.facebook.com/ittechnica/" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                <i class="fab fa-facebook-f mr-2"></i> Facebook
+            </a>
+            <a href="index.html#home" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">Home</a>
+            <a href="index.html#services" class="block px-4 py-2 text-blue-700 hover:bg-gray-100 transition-colors bg-blue-50">Services</a>
+            <a href="index.html#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">About Us</a>
+            <a href="index.html#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title Section (Similar to Hero but smaller) with Slideshow Background -->
+        <section class="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 md:py-20 overflow-hidden">
+            <!-- Slideshow Container -->
+            <div id="slideshow-container" class="absolute inset-0">
+                <img src="https://i.imgur.com/cagyyMq.png" alt="IT Solutions Background 1" class="slideshow-image active">
+                <img src="https://i.imgur.com/1zB5vHa.jpeg" alt="Technology Services" class="slideshow-image">
+                <img src="https://i.imgur.com/UuaCziX.jpeg" alt="Digital Transformation" class="slideshow-image">
+            </div>
+            <!-- Overlay for text readability (re-added) -->
+            <div class="absolute inset-0 bg-black opacity-40 z-0"></div>
+            <!-- Content on top -->
+            <div class="container mx-auto px-4 relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                    Complete Website Solutions
+                </h1>
+                <p class="text-lg md:text-xl opacity-90">
+                    From stunning designs to reliable hosting and domain registration.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content Section: Introduction -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">
+                    Your Digital Presence Starts Here
+                </h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                    In today's digital age, a strong online presence is crucial for success. IT Technica offers an integrated suite of services to help you establish, grow, and maintain your digital footprint. From custom website design and development to reliable domain registration and robust web hosting, we are your one-stop solution for all things web.
+                </p>
+
+                <!-- Section: Website Design & Development -->
+                <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-8 mt-16 text-center">
+                    Website Design & Development
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            Custom Web Design
+                        </h4>
+                        <p class="text-gray-600">Creating unique, visually appealing, and user-friendly websites tailored to your brand.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1l-.75-3M3 13h18M5 17h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            Responsive Development
+                        </h4>
+                        <p class="text-gray-600">Ensuring your website looks great and functions perfectly on all devices (desktops, tablets, mobiles).</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h10M4 4h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"></path></svg>
+                            E-commerce Solutions
+                        </h4>
+                        <p class="text-gray-600">Building secure and robust online stores to help you sell products and services effectively.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            Content Management Systems
+                        </h4>
+                        <p class="text-gray-600">Implementing platforms like WordPress for easy content updates and management.</p>
+                    </div>
+                </div>
+
+                <!-- Section: Domain Registration -->
+                <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-8 mt-16 text-center">
+                    Domain Registration
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.102 1.101m-4.607 7.042l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.102 1.101"></path></svg>
+                            Finding the Perfect Domain
+                        </h4>
+                        <p class="text-gray-600">Assisting you in choosing a memorable and relevant domain name for your business.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                            Easy Registration Process
+                        </h4>
+                        <p class="text-gray-600">Handling the entire domain registration process, including various top-level domains (.com, .np, .org, etc.).</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            Domain Management
+                        </h4>
+                        <p class="text-gray-600">Providing ongoing support for domain renewals, DNS management, and transfers.</p>
+                    </div>
+                </div>
+
+                <!-- Section: Web Hosting -->
+                <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-8 mt-16 text-center">
+                    Reliable Web Hosting
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                            High Uptime Guarantee
+                        </h4>
+                        <p class="text-gray-600">Ensuring your website is always accessible to your visitors with minimal downtime.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10m0 0l-4-4m4 4l4-4m0-7v10m0 0l4-4m-4 4l4-4"></path></svg>
+                            Fast Loading Speeds
+                        </h4>
+                        <p class="text-gray-600">Optimized servers for quick website loading, improving user experience and SEO.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                            Secure Hosting Environment
+                        </h4>
+                        <p class="text-gray-600">Robust security measures to protect your website from threats and unauthorized access.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                            24/7 Technical Support
+                        </h4>
+                        <p class="text-gray-600">Dedicated support team available round the clock to assist with any hosting-related issues.</p>
+                    </div>
+                </div>
+
+                <!-- Call to action -->
+                <div class="text-center mt-12">
+                    <p class="text-lg text-gray-700 mb-6">
+                        Ready to launch or upgrade your online presence? Let's get started!
+                    </p>
+                    <a href="index.html#contact" class="inline-block bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-800 transition-transform transform hover:scale-105">
+                        Contact Us for Website Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Identical to Main Page) -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 IT Technica Pvt. Ltd. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="index.html#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // If the link is to a section on the index page, the browser handles it.
+                // If it's for the same page, the logic below would be applied, but not directly for external links.
+            });
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside (optional, but good for UX)
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Slideshow functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow-image');
+
+        function showSlides() {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            // Increment slide index and loop back if needed
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+
+            // Show the current slide
+            slides[slideIndex - 1].classList.add('active');
+
+            // Change image every 5 seconds (5000 milliseconds)
+            setTimeout(showSlides, 5000);
+        }
+
+        // Start slideshow when the page loads
+        window.addEventListener('load', showSlides);
+    </script>
+</body>
+</html>

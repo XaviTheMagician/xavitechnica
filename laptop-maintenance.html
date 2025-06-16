@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Maintenance - IT Technica</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Styles for the slideshow images */
+        .slideshow-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Changed to 'cover' for filling the space */
+            opacity: 0; /* Hidden by default */
+            transition: opacity 1.5s ease-in-out; /* Smooth fade transition */
+        }
+        .slideshow-image.active {
+            opacity: 1; /* Active image is visible */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header and Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-blue-700 rounded-md p-2 hover:bg-blue-50 transition-colors flex items-center">
+                <img src="https://i.imgur.com/JTB9DuB.jpeg" alt="IT Technica Logo" class="h-7 w-auto mr-2"> 
+                IT Technica
+            </a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <!-- Megatraining Image/Link added -->
+                <a href="https://megatraining.com.np/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                    <img src="https://i.imgur.com/BDclEmo.png" alt="Megatraining" class="w-7 h-7 object-contain rounded-full">
+                </a>
+                <!-- Facebook Icon added to the left of Home -->
+                <a href="https://www.facebook.com/ittechnica/" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-blue-700 transition-colors p-2 rounded-full hover:bg-gray-100">
+                    <i class="fab fa-facebook-f text-lg"></i>
+                </a>
+                <a href="index.html#home" class="text-gray-700 hover:text-blue-700 font-medium transition-colors p-2 rounded-md hover:bg-gray-100">Home</a>
+                <a href="index.html#services" class="text-blue-700 hover:text-blue-700 font-medium transition-colors p-2 rounded-md hover:bg-gray-100 bg-blue-50">Services</a>
+                <a href="index.html#about" class="text-gray-700 hover:text-blue-700 font-medium transition-colors p-2 rounded-md hover:bg-gray-100">About Us</a>
+                <a href="index.html#contact" class="text-gray-700 hover:text-blue-700 font-medium transition-colors p-2 rounded-md hover:bg-gray-100">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 p-2 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-4">
+            <!-- Megatraining Image/Link added to mobile menu -->
+            <a href="https://megatraining.com.np/" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors flex items-center">
+                <img src="https://i.imgur.com/BDclEmo.png" alt="Megatraining" class="w-7 h-7 object-contain rounded-full mr-2"> Megatraining
+            </a>
+            <!-- Facebook Icon added to the left of Home in mobile menu -->
+            <a href="https://www.facebook.com/ittechnica/" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                <i class="fab fa-facebook-f mr-2"></i> Facebook
+            </a>
+            <a href="index.html#home" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">Home</a>
+            <a href="index.html#services" class="block px-4 py-2 text-blue-700 hover:bg-gray-100 transition-colors bg-blue-50">Services</a>
+            <a href="index.html#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">About Us</a>
+            <a href="index.html#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title Section (Similar to Hero but smaller) with Slideshow Background -->
+        <section class="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 md:py-20 overflow-hidden">
+            <!-- Slideshow Container -->
+            <div id="slideshow-container" class="absolute inset-0">
+                <img src="https://i.imgur.com/cagyyMq.png" alt="IT Solutions Background 1" class="slideshow-image active">
+                <img src="https://i.imgur.com/1zB5vHa.jpeg" alt="Technology Services" class="slideshow-image">
+                <img src="https://i.imgur.com/UuaCziX.jpeg" alt="Digital Transformation" class="slideshow-image">
+            </div>
+            <!-- Overlay for text readability (re-added) -->
+            <div class="absolute inset-0 bg-black opacity-40 z-0"></div>
+            <!-- Content on top -->
+            <div class="container mx-auto px-4 relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                    Laptop Maintenance
+                </h1>
+                <p class="text-lg md:text-xl opacity-90">
+                    Expert diagnosis and repair for all your laptop issues.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content Section: Introduction & Common Problems -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">
+                    Understanding Laptop Maintenance
+                </h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                    Laptops are essential tools for work, study, and entertainment. Regular maintenance and timely repair of common issues can significantly extend their lifespan and ensure optimal performance. At IT Technica, we provide comprehensive laptop maintenance and repair services to keep your device running smoothly.
+                </p>
+
+                <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-8 mt-12 text-center">
+                    Common Laptop Problems We Fix
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <!-- Problem List Item -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            No Display
+                        </h4>
+                        <p class="text-gray-600">Troubleshooting and fixing issues where your laptop screen remains black or shows no output.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Hanging & Slow Performance
+                        </h4>
+                        <p class="text-gray-600">Optimizing system speed, resolving freezing issues, and upgrading components for better performance.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1l-.75-3M3 13h18M5 17h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            Application Problems
+                        </h4>
+                        <p class="text-gray-600">Diagnosing and fixing software crashes, incompatibility, and other application-related errors.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            Dim Display
+                        </h4>
+                        <p class="text-gray-600">Repairing backlight issues, screen flickering, or overall dimness of your laptop screen.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004 12c0 2.21.817 4.265 2.274 5.862M4 14v5h.582m15.356-2A8.001 8.001 0 0020 12c0-2.21-.817-4.265-2.274-5.862m0 0L9 1m9 0L1 9.774"></path></svg>
+                            Frequent Restarting
+                        </h4>
+                        <p class="text-gray-600">Addressing issues causing unexpected shutdowns or continuous restarts of your laptop.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            Charging Problems & No Backup
+                        </h4>
+                        <p class="text-gray-600">Fixing battery charging issues and problems with battery life and backup capacity.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            Charger Problems
+                        </h4>
+                        <p class="text-gray-600">Repair or replacement of faulty laptop chargers and power adapters.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            Windows Activation
+                        </h4>
+                        <p class="text-gray-600">Assistance with Windows operating system activation issues and licensing.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0v4m-1.5 10h4.5a2 2 0 002-2V7a2 2 0 00-2-2H8a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            Wi-Fi Problems
+                        </h4>
+                        <p class="text-gray-600">Diagnosing and resolving wireless connectivity issues, network adapter problems.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                            Feeding/Scrolling Screen
+                        </h4>
+                        <p class="text-gray-600">Addressing issues with screen tearing, erratic scrolling, or display distortion.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            Touchpad Problems
+                        </h4>
+                        <p class="text-gray-600">Fixing unresponsive, erratic, or non-functional laptop touchpads.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Camera Problems
+                        </h4>
+                        <p class="text-gray-600">Resolving issues with integrated webcams not working or showing poor quality.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            Keyboard Problems
+                        </h4>
+                        <p class="text-gray-600">Repairing sticky keys, unresponsive keys, or complete keyboard malfunctions.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6m-1-4h.01M6 20h2L7 11.5a2 2 0 012-2c.5 0 1 .5 1.5 1s1.5 1 2 1c.5 0 1-.5 1.5-1s1.5-1 2-1c.5 0 1 .5 1.5 1L19 11.5l-1 8.5M10 5h4"></path></svg>
+                            Heating Problems
+                        </h4>
+                        <p class="text-gray-600">Addressing overheating issues due to dust, poor ventilation, or faulty cooling systems.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            Touch Screen Problems
+                        </h4>
+                        <p class="text-gray-600">Repairing unresponsive or inaccurate touch screen functionality on compatible laptops.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.279A8.958 8.958 0 0112 3a8.999 8.999 0 01-7.757 4.779M21 12a9 9 0 01-9 9m-6.21-18h12.42c1.78 0 2.67 2.007 1.595 3.25l-5.216 5.867a2 2 0 01-3.19 0L4.385 5.25C3.31 4.007 4.2 2 5.99 2z"></path></svg>
+                            Booting Problems
+                        </h4>
+                        <p class="text-gray-600">Diagnosing and resolving issues preventing your laptop from starting up correctly.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Section Placeholder -->
+                <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-8 mt-12 text-center">
+                    Frequently Asked Questions (FAQs)
+                </h3>
+                <div class="space-y-6">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Q: How often should I get my laptop serviced?</h4>
+                        <p class="text-gray-600">A: We recommend a professional service at least once a year to keep your laptop in optimal condition and prevent major issues.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Q: How long does a typical laptop repair take?</h4>
+                        <p class="text-gray-600">A: Repair times vary depending on the complexity of the issue. Simple repairs might take a few hours, while more complex ones could take a few days. We'll provide an estimate after diagnosis.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Q: Do you offer warranty on repairs?</h4>
+                        <p class="text-gray-600">A: Yes, we offer a warranty on our repair services and replaced parts. Please inquire for specific terms and conditions.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Q: Can you recover data from a damaged laptop?</h4>
+                        <p class="text-gray-600">A: In many cases, yes. We offer data recovery services for damaged hard drives or non-booting systems. Contact us for an assessment.</p>
+                    </div>
+                </div>
+
+                <!-- Call to action -->
+                <div class="text-center mt-12">
+                    <p class="text-lg text-gray-700 mb-6">
+                        Experiencing a laptop issue not listed here? Don't worry, we can help!
+                    </p>
+                    <a href="index.html#contact" class="inline-block bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-800 transition-transform transform hover:scale-105">
+                        Contact Us for a Solution
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Identical to Main Page) -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 IT Technica Pvt. Ltd. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="index.html#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // If the link is to a section on the index page, the browser handles it.
+                // If it's for the same page, the logic below would be applied, but not directly for external links.
+            });
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside (optional, but good for UX)
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Slideshow functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow-image');
+
+        function showSlides() {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            // Increment slide index and loop back if needed
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+
+            // Show the current slide
+            slides[slideIndex - 1].classList.add('active');
+
+            // Change image every 5 seconds (5000 milliseconds)
+            setTimeout(showSlides, 5000);
+        }
+
+        // Start slideshow when the page loads
+        window.addEventListener('load', showSlides);
+    </script>
+</body>
+</html>
